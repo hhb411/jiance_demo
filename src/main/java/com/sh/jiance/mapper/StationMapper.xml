@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.sh.jiance.mapper.StationMapper">
+	<resultMap type="com.sh.jiance.model.Station" id="stationMap">
+		<result column="station_no" property="stationNo" jdbcType="VARCHAR"/>
+		<result column="station_nam" property="stationNam" jdbcType="VARCHAR"/>
+		<result column="station_type" property="stationType" jdbcType="VARCHAR"/>
+		<result column="region_no" property="regionNo" jdbcType="VARCHAR"/>
+		<result column="address" property="address" jdbcType="VARCHAR"/>
+		<result column="longitude" property="longitude" jdbcType="DOUBLE"/>
+		<result column="latitude" property="latitude" jdbcType="NUMERIC"/>
+		<result column="altitude" property="altitude"/>
+		<result column="order_no" property="orderNo"/>
+		<result column="last_update_time" property="lastUpdateTime"/>
+		<result column="date_time" property="dateTime"/>
+		<result column="time_stamp" property="timeStamp"/>
+	</resultMap>
+ 	<select id="findByWhere" parameterType="com.sh.jiance.model.Station" resultMap="stationMap">
+		select * from station 
+		<where>
+			<if test="stationNo != null">
+				station_no=#{stationNo}
+			</if>
+		</where>
+	</select>
+</mapper>
+
